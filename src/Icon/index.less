@@ -1,0 +1,9 @@
+@import '../styles/index.less';
+
+each(@theme-colors, {
+    .icon-@{key} {
+      color: @value;
+    }
+  }
+
+);
