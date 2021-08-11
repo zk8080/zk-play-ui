@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-01-27 21:36:51
- * @LastEditTime: 2021-01-31 15:04:15
+ * @LastEditTime: 2021-08-11 21:05:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vikingship/src/components/Button/button.test.tsx
  */
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render, shallow, mount } from 'enzyme';
 import Button, { ButtonProps } from './index';
 
 const defaultProps = {
@@ -33,25 +33,24 @@ describe('test Button Component', () => {
     wrapper.simulate('click');
     expect(defaultProps.onClick).toHaveBeenCalled();
   });
-  // it('should render the correct component based on different props', () => {
-  //   const wrapper = render(<Button {...testProps}>Nice</Button>);
-  //   const element = wrapper.getByText('Nice');
-  //   expect(element).toBeInTheDocument();
-  //   expect(element).toHaveClass('btn-lg btn-primary klass');
-  // })
-  // it('should render a link when btnType equals link and href is provided', () => {
-  //   const wrapper = render(<Button btnType="link" href="www.baidu.com">Link</Button>);
-  //   const element = wrapper.getByText('Link');
-  //   expect(element).toBeInTheDocument();
-  //   expect(element.tagName).toEqual('A');
-  //   expect(element).toHaveClass('btn btn-link');
-  // })
-  // it('should render disabled button when disabled set true', () => {
-  //   const wrapper = render(<Button {...disabledProps}>Nice</Button>)
-  //   const element = wrapper.getByText('Nice') as HTMLButtonElement
-  //   expect(element).toBeInTheDocument()
-  //   expect(element.disabled).toBeTruthy()
-  //   fireEvent.click(element)
-  //   expect(disabledProps.onClick).not.toHaveBeenCalled()
-  // })
+  it('should render the correct component based on different props', () => {
+    const wrapper = shallow(<Button {...testProps}>Nice</Button>);
+    const element = wrapper.find('.klass');
+    expect(element.hasClass('btn-lg')).toBeTruthy();
+  });
+  it('should render a link when btnType equals link and href is provided', () => {
+    const wrapper = shallow(
+      <Button btnType="link" href="www.baidu.com">
+        Link
+      </Button>,
+    );
+    expect(wrapper.name()).toEqual('a');
+    expect(wrapper.hasClass('btn btn-link')).toBeTruthy();
+  });
+  it('should render disabled button when disabled set true', () => {
+    const wrapper = mount(<Button {...disabledProps}>Nice</Button>);
+    expect(wrapper.prop('disabled')).toBeTruthy();
+    wrapper.simulate('click');
+    expect(disabledProps.onClick).not.toHaveBeenCalled();
+  });
 });
