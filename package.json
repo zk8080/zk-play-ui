@@ -11,20 +11,29 @@
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "test:coverage": "umi-test --coverage",
+    "commit": "git cz"
   },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
+  "config": {
+    "commitizen": {
+      "path": "cz-customizable"
+    }
+  },
   "gitHooks": {
+    "commit-msg": "commitlint -e -V",
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,less,md,json}": [
-      "prettier --write"
+      "prettier --write",
+      "git add ."
     ],
     "*.ts?(x)": [
-      "prettier --parser=typescript --write"
+      "prettier --parser=typescript --write",
+      "git add ."
     ]
   },
   "dependencies": {
@@ -34,10 +43,14 @@
     "react": "^16.12.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
     "@types/enzyme": "^3.10.9",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^27.0.0",
     "@umijs/test": "^3.0.5",
+    "commitizen": "^4.2.4",
+    "commitlint-config-cz": "^0.13.2",
+    "cz-customizable": "^6.3.0",
     "dumi": "^1.0.16",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
