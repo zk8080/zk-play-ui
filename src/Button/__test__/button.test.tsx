@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import { render, shallow, mount } from 'enzyme';
-import Button, { ButtonProps } from './index';
+import Button, { ButtonProps } from '../index';
 
 const defaultProps = {
   onClick: jest.fn(),

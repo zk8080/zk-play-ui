@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Menu and MenuItem component in default(horizontal) mode should render correct Menu and MenuItem based on default props 1`] = `ReactWrapper {}`;
+
+exports[`test Menu and MenuItem component in default(horizontal) mode should render the correct default menu with SubMenu 1`] = `ReactWrapper {}`;

@@ -1,8 +1,8 @@
 import React from 'react';
 // import { render, RenderResult, fireEvent, wait } from '@testing-library/react';
 import { render, shallow, mount, ReactWrapper } from 'enzyme';
-import Menu, { MenuProps } from './menu';
-jest.mock('../Icon', () => {
+import Menu, { MenuProps } from '../menu';
+jest.mock('../../Icon', () => {
   return () => {
     return <i className="fa" />;
   };
