@@ -13,5 +13,3 @@ library.add(fas);
 export { default as Foo } from './Foo';
 export { default as Button } from './Button';
 export { default as Menu } from './Menu/menu';
-export { default as MenuItem } from './Menu/menuItem';
-export { default as SubMenuItem } from './Menu/subMenuItem';

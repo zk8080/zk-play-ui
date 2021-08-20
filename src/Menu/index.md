@@ -13,17 +13,24 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { Menu, MenuItem, SubMenuItem } from 'zk-play-ui';
+import { Menu } from 'zk-play-ui';
 
-export default () => (
-  <Menu defaultIndex={'0'} defaultOpenSubMenus={['3']}>
-    <MenuItem>menu</MenuItem>
-    <MenuItem disabled>menu1</MenuItem>
-    <MenuItem>menu2</MenuItem>
-    <SubMenuItem title="drop">
-      <MenuItem>test1</MenuItem>
-      <MenuItem>test2</MenuItem>
-    </SubMenuItem>
+export default (props) => (
+  <Menu
+    defaultIndex="0"
+    className="test"
+    defaultOpenSubMenus={['4']}
+    mode="vertical"
+  >
+    <Menu.Item>active</Menu.Item>
+    <Menu.Item disabled>disabled</Menu.Item>
+    <Menu.Item className="test-xyz">xyz</Menu.Item>
+    <Menu.SubMenuItem title="dropdown">
+      <Menu.Item>drop1</Menu.Item>
+    </Menu.SubMenuItem>
+    <Menu.SubMenuItem title="opened">
+      <Menu.Item>opened1</Menu.Item>
+    </Menu.SubMenuItem>
   </Menu>
 );
 ```

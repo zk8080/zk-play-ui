@@ -6,10 +6,11 @@
  * @Description: In User Settings Edit
  * @FilePath: /vikingship/src/components/Menu/menu.tsx
  */
-import React, { createContext, useState } from 'react';
+import React, { createContext, FC, useState } from 'react';
 import classNames from 'classnames';
-import { MenuItemProps } from './menuItem';
+import MenuItem, { MenuItemProps } from './menuItem';
 import './index.less';
+import SubMenuItem, { SubMenuItemProps } from './subMenuItem';
 
 type MenuMode = 'horizontal' | 'vertical';
 type SelectCallback = (selectedIndex: string) => void;
@@ -93,4 +94,13 @@ Menu.defaultProps = {
   defaultOpenSubMenus: [],
 };
 
-export default Menu;
+type IMenuComponent = FC<MenuProps> & {
+  Item: FC<MenuItemProps>;
+  SubMenuItem: FC<SubMenuItemProps>;
+};
+
+const RootMenu = Menu as IMenuComponent;
+RootMenu.SubMenuItem = SubMenuItem;
+RootMenu.Item = MenuItem;
+
+export default RootMenu;
