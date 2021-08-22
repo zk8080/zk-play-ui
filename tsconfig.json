@@ -6,10 +6,13 @@
     "importHelpers": true,
     "jsx": "react",
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declaration": true,
     "sourceMap": true,
     "baseUrl": "./",
     "strict": true,
     "paths": {
+      "zk-play-ui": ["src/index.ts"],
       "@/*": ["src/*"],
       "@@/*": ["src/.umi/*"]
     },

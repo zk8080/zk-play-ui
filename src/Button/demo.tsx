@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-11 20:31:14
- * @LastEditTime: 2021-08-11 20:49:42
+ * @LastEditTime: 2021-08-22 16:50:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/Button/demo.tsx
@@ -10,7 +10,7 @@ import React from 'react';
 import { Button } from 'zk-play-ui';
 import './demo.less';
 
-function BaseDemo(props) {
+function BaseDemo() {
   return (
     <div className="button-demo--wrapper">
       <Button>defaut</Button>

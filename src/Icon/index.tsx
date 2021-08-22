@@ -1,10 +1,18 @@
+/*
+ * @Author: your name
+ * @Date: 2021-08-11 23:28:51
+ * @LastEditTime: 2021-08-22 16:35:44
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /zk-play-ui/src/Icon/index.tsx
+ */
 import React, { FC } from 'react';
 import classNames from 'classnames';
 import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from '@fortawesome/react-fontawesome';
-import './index.less';
+// import './index.less';
 
 export type ThemeProps =
   | 'primary'

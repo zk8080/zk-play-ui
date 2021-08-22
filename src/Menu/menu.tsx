@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-31 15:16:16
- * @LastEditTime: 2021-08-15 17:33:35
+ * @LastEditTime: 2021-08-22 16:36:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vikingship/src/components/Menu/menu.tsx
@@ -9,7 +9,7 @@
 import React, { createContext, FC, useState } from 'react';
 import classNames from 'classnames';
 import MenuItem, { MenuItemProps } from './menuItem';
-import './index.less';
+// import './index.less';
 import SubMenuItem, { SubMenuItemProps } from './subMenuItem';
 
 type MenuMode = 'horizontal' | 'vertical';
