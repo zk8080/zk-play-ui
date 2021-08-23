@@ -1,13 +1,15 @@
 <!--
  * @Author: your name
  * @Date: 2021-08-23 21:46:25
- * @LastEditTime: 2021-08-23 22:00:13
+ * @LastEditTime: 2021-08-23 22:03:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/Input/index.md
 -->
 
-## 基本使用
+## Input
+
+### 基本使用
 
 ```tsx
 import React from 'react';
@@ -18,7 +20,7 @@ export default () => (
 );
 ```
 
-## 禁用
+### 禁用
 
 ```tsx
 import React from 'react';
@@ -29,7 +31,7 @@ export default () => (
 );
 ```
 
-## 图标
+### 图标
 
 ```tsx
 import React from 'react';
@@ -44,7 +46,7 @@ export default () => (
 );
 ```
 
-## 前缀后缀
+### 前缀后缀
 
 ```tsx
 import React from 'react';
@@ -62,7 +64,7 @@ export default () => (
 );
 ```
 
-## 尺寸
+### 尺寸
 
 ```tsx
 import React from 'react';
