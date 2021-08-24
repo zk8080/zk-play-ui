@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-08-23 21:39:39
- * @LastEditTime: 2021-08-23 21:39:46
- * @LastEditors: your name
+ * @LastEditTime: 2021-08-24 21:59:07
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/Input/input.tsx
  */
@@ -32,15 +32,6 @@ export interface InputProps
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-/**
- * Input 输入框 通过鼠标或键盘输入内容，是最基础的表单域的包装。
- *
- * ~~~js
- * // 这样引用
- * import { Input } from 'vikingship'
- * ~~~
- * 支持 HTMLInput 的所有基本属性
- */
 export const Input: FC<InputProps> = (props) => {
   const { disabled, size, icon, prepend, append, style, ...restProps } = props;
   const cnames = classNames('viking-input-wrapper', {
