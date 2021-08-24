@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-03-01 22:32:11
- * @LastEditTime: 2021-08-24 21:59:49
- * @LastEditors: your name
+ * @LastEditTime: 2021-08-24 22:57:15
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/Menu/subMenuItem.tsx
  */
@@ -23,6 +23,8 @@ export interface SubMenuItemProps {
   title: string;
   className?: string;
 }
+
+const prefixCls = 'zk-play-menu';
 
 const SubMenuItem: FC<SubMenuItemProps> = (props) => {
   const context = useContext(MenuContext);
@@ -70,7 +72,7 @@ const SubMenuItem: FC<SubMenuItemProps> = (props) => {
       : {};
 
   const renderClidren = () => {
-    const subMenuClasses = classNames('viking-submenu', {
+    const subMenuClasses = classNames(`${prefixCls}-submenu`, {
       'menu-opened': menuOpen,
     });
     const childrenComponent = React.Children.map(children, (child, i) => {

@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-08-22 16:26:20
+ * @LastEditTime: 2021-08-24 22:13:09
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /zk-play-ui/src/Button/index.tsx
+ */
 import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 import classNames from 'classnames';
 // import './index.less';
@@ -39,6 +47,8 @@ type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>;
 type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>;
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
+const prefixCls = 'zk-play-btn';
+
 const Button: FC<ButtonProps> = (props) => {
   const {
     className,
@@ -50,9 +60,9 @@ const Button: FC<ButtonProps> = (props) => {
     ...restProps
   } = props;
 
-  const classes = classNames('btn', className, {
-    [`btn-${btnType}`]: btnType,
-    [`btn-${size}`]: size,
+  const classes = classNames(prefixCls, className, {
+    [`${prefixCls}-${btnType}`]: btnType,
+    [`${prefixCls}-${size}`]: size,
     disabled: btnType === 'link' && disabled,
   });
 

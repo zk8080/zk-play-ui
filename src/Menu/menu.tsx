@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-08-22 14:45:13
+ * @LastEditTime: 2021-08-24 22:55:56
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /zk-play-ui/src/Menu/menu.tsx
+ */
 import React, { createContext, FC, useState } from 'react';
 import classNames from 'classnames';
 import MenuItem, { MenuItemProps } from './menuItem';
@@ -24,6 +32,8 @@ interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext>({ index: '0' });
 
+const prefixCls = 'zk-play-menu';
+
 const Menu: React.FC<MenuProps> = (props) => {
   const {
     className,
@@ -35,7 +45,7 @@ const Menu: React.FC<MenuProps> = (props) => {
     defaultOpenSubMenus,
   } = props;
   const [currentActive, setActive] = useState(defaultIndex);
-  const classes = classNames('viking-menu', className, {
+  const classes = classNames(prefixCls, className, {
     'menu-vertical': mode === 'vertical',
     'menu-horizontal': mode !== 'vertical',
   });

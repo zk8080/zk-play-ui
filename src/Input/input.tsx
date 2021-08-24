@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-23 21:39:39
- * @LastEditTime: 2021-08-24 21:59:07
+ * @LastEditTime: 2021-08-24 22:51:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/Input/input.tsx
@@ -32,14 +32,16 @@ export interface InputProps
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
+const prefixCls = 'zk-play-input';
+
 export const Input: FC<InputProps> = (props) => {
   const { disabled, size, icon, prepend, append, style, ...restProps } = props;
-  const cnames = classNames('viking-input-wrapper', {
-    [`input-size-${size}`]: size,
+  const cnames = classNames(`${prefixCls}-wrapper`, {
+    [`${prefixCls}-size-${size}`]: size,
     'is-disabled': disabled,
-    'input-group': prepend || append,
-    'input-group-append': !!append,
-    'input-group-prepend': !!prepend,
+    [`${prefixCls}-group`]: prepend || append,
+    [`${prefixCls}-append`]: !!append,
+    [`${prefixCls}-prepend`]: !!prepend,
   });
   const fixControlledValue = (value: any) => {
     if (typeof value === 'undefined' || value === null) {
@@ -53,18 +55,18 @@ export const Input: FC<InputProps> = (props) => {
   }
   return (
     <div className={cnames} style={style}>
-      {prepend && <div className="viking-input-group-prepend">{prepend}</div>}
+      {prepend && <div className={`${prefixCls}-group-prepend`}>{prepend}</div>}
       {icon && (
         <div className="icon-wrapper">
           <Icon icon={icon} title={`title-${icon}`} />
         </div>
       )}
       <input
-        className="viking-input-inner"
+        className={`${prefixCls}-inner`}
         disabled={disabled}
         {...restProps}
       />
-      {append && <div className="viking-input-group-append">{append}</div>}
+      {append && <div className={`${prefixCls}-group-append`}>{append}</div>}
     </div>
   );
 };

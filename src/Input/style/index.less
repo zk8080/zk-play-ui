@@ -1,6 +1,7 @@
 @import '../../styles/index.less';
+@prefixCls: zk-play-input;
 
-.viking-input-wrapper {
+.@{prefixCls}-wrapper {
   display: flex;
   width: 100%;
   margin-bottom: 30px;
@@ -20,10 +21,10 @@
     }
   }
 }
-.icon-wrapper + .viking-input-inner {
+.icon-wrapper + .@{prefixCls}-inner {
   padding-right: 35px;
 }
-.viking-input-inner {
+.@{prefixCls}-inner {
   width: 100%;
   padding: @input-padding-y @input-padding-x;
   font-family: @input-font-family;
@@ -62,8 +63,8 @@
     opacity: 1;
   }
 }
-.viking-input-group-prepend,
-.viking-input-group-append {
+.@{prefixCls}-group-prepend,
+.@{prefixCls}-group-append {
   display: flex;
   align-items: center;
   padding: @input-padding-y @input-padding-x;
@@ -78,27 +79,27 @@
   border: @input-border-width solid @input-group-addon-border-color;
   border-radius: @input-border-radius;
 }
-.viking-input-group-append + .btn {
+.@{prefixCls}-group-append + .btn {
   padding: 0;
   border: 0;
 }
-.input-group > .viking-input-group-prepend,
-.input-group.input-group-append > .viking-input-inner {
+.@{prefixCls}-group > .@{prefixCls}-group-prepend,
+.@{prefixCls}-group.@{prefixCls}-append > .@{prefixCls}-inner {
   .border-right-radius(0);
 }
 
-.input-group > .viking-input-group-append,
-.input-group.input-group-prepend > .viking-input-inner {
+.@{prefixCls}-group > .@{prefixCls}-group-append,
+.@{prefixCls}-group.@{prefixCls}-prepend > .@{prefixCls}-inner {
   .border-left-radius(0);
 }
 
-.input-size-sm .viking-input-inner {
+.@{prefixCls}-size-sm .@{prefixCls}-inner {
   padding: @input-padding-y-sm @input-padding-x-sm;
   font-size: @input-font-size-sm;
   border-radius: @input-border-radius-sm;
 }
 
-.input-size-lg .viking-input-inner {
+.@{prefixCls}-size-lg .@{prefixCls}-inner {
   padding: @input-padding-y-lg @input-padding-x-lg;
   font-size: @input-font-size-lg;
   border-radius: @input-border-radius-lg;
