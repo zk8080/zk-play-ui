@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-08-22 14:45:13
+ * @LastEditTime: 2021-08-24 23:13:27
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /zk-play-ui/src/Menu/__test__/menu.test.tsx
+ */
 import React from 'react';
 // import { render, RenderResult, fireEvent, wait } from '@testing-library/react';
 import { render, shallow, mount, ReactWrapper } from 'enzyme';
@@ -54,7 +62,7 @@ describe('test Menu and MenuItem component in default(horizontal) mode', () => {
   });
   it('should render correct Menu and MenuItem based on default props', () => {
     expect(menuElement).toMatchSnapshot();
-    expect(menuElement.hasClass('viking-menu test')).toBeTruthy();
+    expect(menuElement.hasClass('zk-play-menu test')).toBeTruthy();
     expect(menuElement.find('li').length).toEqual(7);
     expect(activeElement.hasClass('menu-item is-active')).toBeTruthy();
     expect(disabledElement.hasClass('menu-item is-disabled')).toBeTruthy();
