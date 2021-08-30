@@ -1,15 +1,23 @@
 /*
  * @Author: your name
  * @Date: 2021-08-26 22:34:12
- * @LastEditTime: 2021-08-29 21:46:06
+ * @LastEditTime: 2021-08-30 22:51:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/AutoComplete/index.tsx
  */
-import React, { FC, useState, ChangeEvent, ReactElement } from 'react';
+import React, {
+  FC,
+  useState,
+  ChangeEvent,
+  ReactElement,
+  useEffect,
+} from 'react';
 import Input, { InputProps } from '../Input/input';
 import classNames from 'classnames';
 import Icon from '../Icon/index';
+import useDebounce from '@/hooks/useDebounce';
+
 interface DataSourceObject {
   value: string;
 }
@@ -42,24 +50,12 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const [suggestions, setSuggestions] = useState<DataSourceType[]>([]);
   // 是否显示loading
   const [loading, setLoading] = useState<boolean>(false);
+  // 输入值防抖
+  const debounceInputVal = useDebounce(inputVal);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value.trim();
     setInputVal(val);
-    if (val) {
-      const result = fetchSuggestions(val);
-      if (result instanceof Promise) {
-        setLoading(true);
-        result.then((data) => {
-          setLoading(false);
-          setSuggestions(data);
-        });
-      } else {
-        setSuggestions(result);
-      }
-    } else {
-      setSuggestions([]);
-    }
   };
 
   const handleSelect = (item: DataSourceType) => {
@@ -87,6 +83,23 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
       </ul>
     );
   };
+
+  useEffect(() => {
+    if (debounceInputVal) {
+      const result = fetchSuggestions(debounceInputVal);
+      if (result instanceof Promise) {
+        setLoading(true);
+        result.then((data) => {
+          setLoading(false);
+          setSuggestions(data);
+        });
+      } else {
+        setSuggestions(result);
+      }
+    } else {
+      setSuggestions([]);
+    }
+  }, [debounceInputVal]);
 
   return (
     <div className={Cls}>
