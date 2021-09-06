@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-26 22:34:12
- * @LastEditTime: 2021-09-06 20:59:31
+ * @LastEditTime: 2021-09-06 21:22:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/AutoComplete/index.tsx
@@ -13,11 +13,14 @@ import React, {
   ReactElement,
   useEffect,
   KeyboardEvent,
+  useRef,
 } from 'react';
 import Input, { InputProps } from '../Input/input';
 import classNames from 'classnames';
 import Icon from '../Icon/index';
 import useDebounce from '@/hooks/useDebounce';
+import useClickOutside from '@/hooks/useClickOutside';
+
 interface DataSourceObject {
   value: string;
 }
@@ -54,16 +57,26 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const [hightlightIdx, setHightlightIdx] = useState<number>(-1);
   // 输入值防抖
   const debounceInputVal = useDebounce(inputVal);
+  // 是否为输入框输入 fix select时重新执行异步加载
+  const triggerSearchRef = useRef<boolean>(false);
+  // 当前容器Ref
+  const EleRef = useRef<HTMLDivElement>(null);
+  // 当点击当前容器外部时，清空列表
+  useClickOutside(EleRef, () => {
+    setSuggestions([]);
+  });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value.trim();
     setInputVal(val);
+    triggerSearchRef.current = true;
   };
 
   const handleSelect = (item: DataSourceType) => {
     setInputVal(item.value);
     setSuggestions([]);
     onSelect?.(item);
+    triggerSearchRef.current = false;
   };
 
   const hightlight = (index: number) => {
@@ -128,7 +141,7 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
   };
 
   useEffect(() => {
-    if (debounceInputVal) {
+    if (debounceInputVal && triggerSearchRef.current) {
       const result = fetchSuggestions(debounceInputVal);
       if (result instanceof Promise) {
         setLoading(true);
@@ -146,7 +159,7 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
   }, [debounceInputVal]);
 
   return (
-    <div className={Cls}>
+    <div className={Cls} ref={EleRef}>
       <Input
         value={inputVal}
         onChange={handleChange}
