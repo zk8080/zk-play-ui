@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-26 22:34:12
- * @LastEditTime: 2021-09-06 21:22:44
+ * @LastEditTime: 2021-09-06 21:42:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/AutoComplete/index.tsx
@@ -20,7 +20,7 @@ import classNames from 'classnames';
 import Icon from '../Icon/index';
 import useDebounce from '@/hooks/useDebounce';
 import useClickOutside from '@/hooks/useClickOutside';
-
+import Transition from '../Transition/index';
 interface DataSourceObject {
   value: string;
 }
@@ -53,6 +53,8 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const [suggestions, setSuggestions] = useState<DataSourceType[]>([]);
   // 是否显示loading
   const [loading, setLoading] = useState<boolean>(false);
+  // 是否显示下拉菜单
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
   // 高亮下标
   const [hightlightIdx, setHightlightIdx] = useState<number>(-1);
   // 输入值防抖
@@ -121,39 +123,62 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
   // 渲染显示列表
   const generateDropdown = () => {
     return (
-      <ul>
-        {suggestions.map((item, index) => {
-          const itemCls = classNames('suggestions-item', {
-            'item-hightlight': index === hightlightIdx,
-          });
-          return (
-            <li
-              className={itemCls}
-              key={index}
-              onClick={() => handleSelect(item)}
-            >
-              {renderTemplate(item)}
-            </li>
-          );
-        })}
-      </ul>
+      <Transition
+        in={showDropdown || loading}
+        animation="zoom-in-top"
+        timeout={300}
+        onExited={() => {
+          setSuggestions([]);
+        }}
+      >
+        <ul className={`${prefixCls}-list`}>
+          {loading && (
+            <div className="suggstions-loading-icon">
+              <Icon icon="spinner" spin></Icon>
+            </div>
+          )}
+          {suggestions.map((item, index) => {
+            const itemCls = classNames('suggestion-item', {
+              'is-active': index === hightlightIdx,
+            });
+            return (
+              <li
+                className={itemCls}
+                key={index}
+                onClick={() => handleSelect(item)}
+              >
+                {renderTemplate(item)}
+              </li>
+            );
+          })}
+        </ul>
+      </Transition>
     );
   };
 
   useEffect(() => {
     if (debounceInputVal && triggerSearchRef.current) {
+      setSuggestions([]);
       const result = fetchSuggestions(debounceInputVal);
       if (result instanceof Promise) {
         setLoading(true);
         result.then((data) => {
           setLoading(false);
           setSuggestions(data);
+          if (data.length > 0) {
+            // 有数据时显示下拉列表
+            setShowDropdown(true);
+          }
         });
       } else {
         setSuggestions(result);
+        if (result.length > 0) {
+          // 有数据时显示下拉列表
+          setShowDropdown(true);
+        }
       }
     } else {
-      setSuggestions([]);
+      setShowDropdown(false);
     }
     setHightlightIdx(-1);
   }, [debounceInputVal]);
@@ -166,12 +191,7 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
         onKeyDown={handleKeyDown}
         {...resetProps}
       />
-      {loading && (
-        <ul>
-          <Icon icon="spinner" spin></Icon>
-        </ul>
-      )}
-      {suggestions.length > 0 && generateDropdown()}
+      {generateDropdown()}
     </div>
   );
 };
