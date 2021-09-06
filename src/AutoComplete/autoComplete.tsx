@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-26 22:34:12
- * @LastEditTime: 2021-08-30 22:51:34
+ * @LastEditTime: 2021-09-06 20:59:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/AutoComplete/index.tsx
@@ -12,12 +12,12 @@ import React, {
   ChangeEvent,
   ReactElement,
   useEffect,
+  KeyboardEvent,
 } from 'react';
 import Input, { InputProps } from '../Input/input';
 import classNames from 'classnames';
 import Icon from '../Icon/index';
 import useDebounce from '@/hooks/useDebounce';
-
 interface DataSourceObject {
   value: string;
 }
@@ -50,6 +50,8 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const [suggestions, setSuggestions] = useState<DataSourceType[]>([]);
   // 是否显示loading
   const [loading, setLoading] = useState<boolean>(false);
+  // 高亮下标
+  const [hightlightIdx, setHightlightIdx] = useState<number>(-1);
   // 输入值防抖
   const debounceInputVal = useDebounce(inputVal);
 
@@ -64,6 +66,40 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
     onSelect?.(item);
   };
 
+  const hightlight = (index: number) => {
+    if (index < 0) index = 0;
+    if (index > suggestions.length) {
+      index = suggestions.length - 1;
+    }
+    setHightlightIdx(index);
+  };
+
+  // 键盘事件
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    switch (e.keyCode) {
+      // 回车键
+      case 13:
+        if (suggestions[hightlightIdx]) {
+          handleSelect(suggestions[hightlightIdx]);
+        }
+        break;
+      // 上箭头
+      case 38:
+        hightlight(hightlightIdx - 1);
+        break;
+      // 下箭头
+      case 40:
+        hightlight(hightlightIdx + 1);
+        break;
+      // ESC
+      case 27:
+        setSuggestions([]);
+        break;
+      default:
+        break;
+    }
+  };
+
   // 动态渲染模版
   const renderTemplate = (item: DataSourceType) => {
     return renderOption ? renderOption(item) : item.value;
@@ -74,8 +110,15 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
     return (
       <ul>
         {suggestions.map((item, index) => {
+          const itemCls = classNames('suggestions-item', {
+            'item-hightlight': index === hightlightIdx,
+          });
           return (
-            <li key={index} onClick={() => handleSelect(item)}>
+            <li
+              className={itemCls}
+              key={index}
+              onClick={() => handleSelect(item)}
+            >
               {renderTemplate(item)}
             </li>
           );
@@ -99,11 +142,17 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
     } else {
       setSuggestions([]);
     }
+    setHightlightIdx(-1);
   }, [debounceInputVal]);
 
   return (
     <div className={Cls}>
-      <Input value={inputVal} onChange={handleChange} {...resetProps} />
+      <Input
+        value={inputVal}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        {...resetProps}
+      />
       {loading && (
         <ul>
           <Icon icon="spinner" spin></Icon>
