@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-26 22:34:12
- * @LastEditTime: 2021-09-06 21:42:05
+ * @LastEditTime: 2021-09-07 21:53:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/AutoComplete/index.tsx
@@ -18,8 +18,8 @@ import React, {
 import Input, { InputProps } from '../Input/input';
 import classNames from 'classnames';
 import Icon from '../Icon/index';
-import useDebounce from '@/hooks/useDebounce';
-import useClickOutside from '@/hooks/useClickOutside';
+import useDebounce from '../hooks/useDebounce';
+import useClickOutside from '../hooks/useClickOutside';
 import Transition from '../Transition/index';
 interface DataSourceObject {
   value: string;
