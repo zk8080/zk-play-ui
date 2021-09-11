@@ -1,4 +1,5 @@
 import { defineConfig } from 'dumi';
+import path from 'path';
 
 export default defineConfig({
   title: 'zk-play-ui',
@@ -13,7 +14,9 @@ export default defineConfig({
         libraryName: 'zk-play-ui',
         camel2DashComponentName: false,
         customStyleName: (name) => {
-          return `./style`; // 注意：这里 ./ 不可省略
+          // return `./style`; // 注意：这里 ./ 不可省略
+          // 由于demo文件夹和style同级，所以使用path.resolve拼接绝对定位
+          return `${path.resolve('src')}/${name}/style/index.ts`;
         },
       },
       'zk-play-ui',
