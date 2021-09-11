@@ -1,10 +1,9 @@
 ## Icon
 
-Demo:
+### Icon 主题
 
-```tsx
-import React from 'react';
-import { Icon } from 'zk-play-ui';
+根据传入不同的`theme`，将会对 icon 设置不同的主题颜色。  
+`primary` | `secondary` | `success` | `info` | `warning` | `danger` | `light` | `dark`
+<code src="./demo/theme.tsx"></code>
 
-export default () => <Icon icon="apple-alt" theme="danger" size="9x" />;
-```
+<API></API>
