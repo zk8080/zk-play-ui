@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-09-12 23:18:12
- * @LastEditTime: 2021-09-17 22:16:33
+ * @LastEditTime: 2021-09-17 22:47:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/.umirc.ts
@@ -45,5 +45,6 @@ export default defineConfig({
   base: '/zk-play-ui',
   publicPath: '/zk-play-ui/',
   exportStatic: {},
+  dynamicImport: {},
   // more config: https://d.umijs.org/config
 });
