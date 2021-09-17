@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-09-12 23:18:12
+ * @LastEditTime: 2021-09-17 21:18:46
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /zk-play-ui/.umirc.ts
+ */
 import { defineConfig } from 'dumi';
 import path from 'path';
 
@@ -33,5 +41,8 @@ export default defineConfig({
       skipPropsWithoutDoc: false,
     },
   },
+  base: '/zk-play-ui',
+  publicPath: '/zk-play-ui/',
+  exportStatic: {},
   // more config: https://d.umijs.org/config
 });
