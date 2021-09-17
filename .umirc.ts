@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-09-12 23:18:12
- * @LastEditTime: 2021-09-17 21:18:46
- * @LastEditors: your name
+ * @LastEditTime: 2021-09-17 22:16:33
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/.umirc.ts
  */
@@ -10,6 +10,7 @@ import { defineConfig } from 'dumi';
 import path from 'path';
 
 export default defineConfig({
+  mode: 'site',
   title: 'zk-play-ui',
   favicon:
     'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',

@@ -1,11 +1,11 @@
-<!--
- * @Author: your name
- * @Date: 2021-08-26 23:04:57
- * @LastEditTime: 2021-08-29 21:40:40
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /zk-play-ui/src/AutoComplete/index.md
--->
+---
+title: AutoComplete 自动完成
+group:
+  title: AutoComplete 自动完成
+nav:
+  title: '组件'
+  path: /components
+---
 
 ## AutoComplete
 

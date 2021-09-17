@@ -1,11 +1,11 @@
-<!--
- * @Author: your name
- * @Date: 2021-08-15 17:34:05
- * @LastEditTime: 2021-08-15 17:37:25
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /zk-play-ui/src/Menu/index.md
--->
+---
+title: Menu 导航菜单
+group:
+  title: Menu 导航菜单
+nav:
+  title: '组件'
+  path: /components
+---
 
 ## Menu
 

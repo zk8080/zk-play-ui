@@ -1,3 +1,12 @@
+---
+title: Icon 图标
+group:
+  title: Icon 图标
+nav:
+  title: '组件'
+  path: /components
+---
+
 ## Icon
 
 ### Icon 主题

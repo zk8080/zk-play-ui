@@ -1,11 +1,11 @@
-<!--
- * @Author: your name
- * @Date: 2021-08-23 21:46:25
- * @LastEditTime: 2021-08-23 22:03:19
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /zk-play-ui/src/Input/index.md
--->
+---
+title: Input 输入框
+group:
+  title: Input 输入框
+nav:
+  title: '组件'
+  path: /components
+---
 
 ## Input
 

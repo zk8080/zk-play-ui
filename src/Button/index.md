@@ -1,3 +1,12 @@
+---
+title: Button 按钮
+group:
+  title: Button 按钮
+nav:
+  title: '组件'
+  path: /components
+---
+
 ## Button
 
 ### 按钮类型：

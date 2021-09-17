@@ -2394,10 +2394,10 @@
     regenerator-runtime "0.13.5"
     schema-utils "^3.0.0"
 
-"@umijs/preset-dumi@1.1.26":
-  version "1.1.26"
-  resolved "http://npm.taimei.com:80/@umijs%2fpreset-dumi/-/preset-dumi-1.1.26.tgz#864bb0b004816df6cb985ab1f1557646cc67e94f"
-  integrity sha1-hkuwsASBbfbLmFqx8VV2Rsxn6U8=
+"@umijs/preset-dumi@1.1.29":
+  version "1.1.29"
+  resolved "https://registry.npmjs.org/@umijs/preset-dumi/-/preset-dumi-1.1.29.tgz#abbb462e7ce40e1ce1939246547722e594c97206"
+  integrity sha512-fLKtLunsyZ2uJh6/tqVpDECuDAv8S0zJiS5nKeUpA2s9f8n90FdNsh26p0ZM7AOsvtYIpLxZoRUUNKax/ZQQdw==
   dependencies:
     "@babel/core" "^7.7.2"
     "@babel/generator" "^7.7.2"
@@ -2413,7 +2413,7 @@
     copy-text-to-clipboard "^2.2.0"
     deepmerge "^4.2.2"
     dumi-assets-types "1.0.0"
-    dumi-theme-default "1.1.9"
+    dumi-theme-default "1.1.12"
     enhanced-resolve "^4.1.1"
     github-slugger "^1.3.0"
     hast-util-has-property "^1.0.4"
@@ -4709,21 +4709,21 @@ dumi-assets-types@1.0.0:
   resolved "https://registry.npm.taobao.org/dumi-assets-types/download/dumi-assets-types-1.0.0.tgz#d5368cb11045b203bf1ef1080e553b2287a2ec81"
   integrity sha1-1TaMsRBFsgO/HvEIDlU7Ioei7IE=
 
-dumi-theme-default@1.1.9:
-  version "1.1.9"
-  resolved "http://npm.taimei.com:80/dumi-theme-default/-/dumi-theme-default-1.1.9.tgz#e7aad356b5ecafcd3a8e2e57ddd811197527e397"
-  integrity sha1-56rTVrXsr806ji5X3dgRGXUn45c=
+dumi-theme-default@1.1.12:
+  version "1.1.12"
+  resolved "https://registry.npmjs.org/dumi-theme-default/-/dumi-theme-default-1.1.12.tgz#8257df585b660737b0a5b6329dab2f050297a2a6"
+  integrity sha512-WkKY7Oww1hmjqFVk+SSfrauEb7VDrAlzxw9qf+HoHK2/4DGYpYpzXShWyuRGZeusWkpgzUHUqHLGq41VFVYvVg==
   dependencies:
     prism-react-renderer "^1.1.1"
     prismjs "^1.21.0"
     rc-tabs "^11.7.1"
 
-dumi@^1.1.26:
-  version "1.1.26"
-  resolved "http://npm.taimei.com:80/dumi/-/dumi-1.1.26.tgz#7247ed9fd66ae7ac81b07e21c99d9fd89f5cf6a9"
-  integrity sha1-ckftn9Zq56yBsH4hyZ2f2J9c9qk=
+dumi@^1.1.29:
+  version "1.1.29"
+  resolved "https://registry.npmjs.org/dumi/-/dumi-1.1.29.tgz#f2662651d63b1c6431c8d898dddde83703efaa85"
+  integrity sha512-OkX0Bo7n/TZdyTAt9jos3quoBtFfkfIxxhc2xLB7DqJCXytm1GoxTXcQGHpR3V/G3bPMoT7u5BO9EGOK9Y+Mtw==
   dependencies:
-    "@umijs/preset-dumi" "1.1.26"
+    "@umijs/preset-dumi" "1.1.29"
     umi "^3.0.0"
 
 duplexer3@^0.1.4:
