@@ -1,27 +1,5 @@
-# zk-play
+<h1 align="center">ZK-Play-UI</h1>
 
-## Getting Started
-
-Install dependencies,
-
-```bash
-$ npm i
-```
-
-Start the dev server,
-
-```bash
-$ npm start
-```
-
-Build documentation,
-
-```bash
-$ npm run docs:build
-```
-
-Build library via `father-build`,
-
-```bash
-$ npm run build
-```
+<div align="center">
+  ZK-Play-UI，是一款基于Dumi，使用 React + TypeScript + Jest + Enzyme 开发的个人组件库 🎉。
+</div>
