@@ -13,9 +13,10 @@
     "test:coverage": "umi-test --coverage",
     "commit": "git cz"
   },
-  "main": "lib/index.js",
-  "module": "es/index.esm.js",
-  "typings": "es/index.d.ts",
+  "main": "./lib/index.js",
+  "module": "./es/index.esm.js",
+  "typings": "./es/index.d.ts",
+  "types": "./es/index.d.ts",
   "config": {
     "commitizen": {
       "path": "cz-customizable"
@@ -71,5 +72,10 @@
     "url": "git+git@github.com:zk8080/zk-play-ui.git",
     "branch": "master",
     "platform": "github"
-  }
+  },
+  "files": [
+    "dist/",
+    "lib/",
+    "es/"
+  ]
 }
