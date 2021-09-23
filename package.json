@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "zk-play-ui",
   "version": "1.0.0",
   "scripts": {
@@ -37,6 +36,7 @@
     ]
   },
   "dependencies": {
+    "@babel/runtime": "^7.15.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
@@ -62,5 +62,14 @@
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
     "yorkie": "^2.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:zk8080/zk-play-ui.git",
+    "branch": "master",
+    "platform": "github"
   }
 }
