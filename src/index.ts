@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-11 23:28:51
- * @LastEditTime: 2021-08-26 23:04:41
+ * @LastEditTime: 2021-10-24 21:50:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /zk-play-ui/src/index.ts
@@ -16,3 +16,4 @@ export { default as Icon } from './Icon';
 export { default as Transition } from './Transition';
 export { default as Input } from './Input';
 export { default as AutoComplete } from './AutoComplete';
+export { default as Upload } from './Upload';
