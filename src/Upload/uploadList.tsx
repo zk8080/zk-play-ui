@@ -1,14 +1,7 @@
-/*
- * @Author: your name
- * @Date: 2021-11-14 20:15:03
- * @LastEditTime: 2021-11-14 20:34:10
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /zk-play-ui/src/Upload/uploadList.tsx
- */
 import React, { FC } from 'react';
 import type { UploadFile } from './upload';
 import Icon from '../Icon';
+import Progress from '../Progress';
 
 interface UploadListProps {
   fileList: UploadFile[];
@@ -19,7 +12,6 @@ const prefixCls = 'zk-play-upload';
 
 const UploadList: FC<UploadListProps> = (props) => {
   const { fileList, onRemove } = props;
-
   return (
     <ul className={`${prefixCls}-list`}>
       {fileList.map((item) => {
@@ -48,11 +40,9 @@ const UploadList: FC<UploadListProps> = (props) => {
                 }}
               />
             </span>
-            {/* {item.status === 'uploading' && 
-              <Progress 
-                percent={item.percent || 0}
-              />
-            } */}
+            {item.status === 'uploading' && (
+              <Progress percent={item.percent || 0} />
+            )}
           </li>
         );
       })}
