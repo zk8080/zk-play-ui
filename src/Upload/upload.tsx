@@ -1,8 +1,7 @@
 import React, { FC, useRef, ChangeEvent, useState } from 'react';
-import classNames from 'classnames';
-import Button from '../Button';
 import axios from 'axios';
 import UploadList from './uploadList';
+import Dragger from './dragger';
 
 export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error';
 export interface UploadFile {
@@ -98,7 +97,7 @@ const Upload: FC<UploadProps> = (props) => {
     accept,
     multiple,
     children,
-    drag
+    drag,
   } = props;
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || []);
   const updateFileList = (
@@ -221,14 +220,19 @@ const Upload: FC<UploadProps> = (props) => {
   };
 
   return (
-    <div 
-      className={prefixCls}
-    >
-      <div 
-        className={`${prefixCls}-input`}
-        onClick={handleClick}
-      >
-        {children}
+    <div className={prefixCls}>
+      <div className={`${prefixCls}-input`} onClick={handleClick}>
+        {drag ? (
+          <Dragger
+            onFile={(files) => {
+              uploadFiles(files);
+            }}
+          >
+            {children}
+          </Dragger>
+        ) : (
+          children
+        )}
         <input
           className={`${prefixCls}-file-input`}
           style={{ display: 'none' }}

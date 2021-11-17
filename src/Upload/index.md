@@ -17,4 +17,8 @@ nav:
 
 <code src="./demo/customData.tsx"></code>
 
+### 拖拽上传
+
+<code src="./demo/drag.tsx"></code>
+
 <API></API>
