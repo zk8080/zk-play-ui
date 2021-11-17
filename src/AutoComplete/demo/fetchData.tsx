@@ -1,6 +1,5 @@
 import React from 'react';
 import { AutoComplete } from 'zk-play-ui';
-import type { DataSourceType } from 'zk-play-ui/es/AutoComplete/autoComplete';
 
 interface GithubUserProps {
   login: string;
@@ -20,8 +19,8 @@ const Index = () => {
       });
   };
 
-  const renderOption = (item: DataSourceType) => {
-    const itemWithGithub = item as DataSourceType<GithubUserProps>;
+  const renderOption = (item: any) => {
+    const itemWithGithub = item;
     return (
       <>
         <h2>Name: {itemWithGithub.value}</h2>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Upload } from 'zk-play-ui';
+import { Button, Upload } from 'zk-play-ui';
 
 export default () => (
   <Upload
@@ -12,5 +12,7 @@ export default () => (
     withCredentials={true}
     accept={'.png'}
     multiple={true}
-  />
+  >
+    <Button btnType="primary">上传文件</Button>
+  </Upload>
 );

@@ -1,14 +1,5 @@
-/*
- * @Author: your name
- * @Date: 2021-09-23 21:35:04
- * @LastEditTime: 2021-09-23 21:38:03
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /zk-play-ui/src/AutoComplete/demo/base.tsx
- */
 import React from 'react';
 import { AutoComplete } from 'zk-play-ui';
-import type { DataSourceType } from 'zk-play-ui/es/AutoComplete/autoComplete';
 
 interface LakerPlayerProps {
   value: string;
@@ -32,11 +23,11 @@ const Index = () => {
   const handleFetch = (val: string) => {
     return testData.filter((item) => item.value.includes(val));
   };
-  const handleSelect = (item: DataSourceType) => {
+  const handleSelect = (item: any) => {
     console.log(item);
   };
-  const renderOption = (item: DataSourceType) => {
-    const lakerPlayerItem = item as DataSourceType<LakerPlayerProps>;
+  const renderOption = (item: any) => {
+    const lakerPlayerItem = item;
     return (
       <>
         <h2>Name: {lakerPlayerItem.value}</h2>

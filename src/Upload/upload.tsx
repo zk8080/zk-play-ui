@@ -73,6 +73,10 @@ export interface UploadProps {
    * @description  是否支持多选
    */
   multiple?: boolean;
+  /**
+   * @description  是否支持拖拽上传
+   */
+  drag?: boolean;
 }
 
 const prefixCls = 'zk-play-upload';
@@ -93,6 +97,8 @@ const Upload: FC<UploadProps> = (props) => {
     withCredentials,
     accept,
     multiple,
+    children,
+    drag
   } = props;
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || []);
   const updateFileList = (
@@ -176,21 +182,21 @@ const Upload: FC<UploadProps> = (props) => {
               percent: percentage,
               status: 'uploading',
             });
-            onProgress?.(percentage, file);
+            onProgress?.(percentage, _file);
           }
         },
       })
       .then((resp) => {
         console.log(resp);
         updateFileList(_file, { status: 'success', response: resp.data });
-        onSuccess?.(resp.data, file);
-        onChange?.(file);
+        onSuccess?.(resp.data, _file);
+        onChange?.(_file);
       })
       .catch((error) => {
         console.log(error);
         updateFileList(_file, { status: 'error', error: error });
-        onError?.(error, file);
-        onChange?.(file);
+        onError?.(error, _file);
+        onChange?.(_file);
       });
   };
 
@@ -215,19 +221,24 @@ const Upload: FC<UploadProps> = (props) => {
   };
 
   return (
-    <div className={prefixCls}>
-      <Button btnType="primary" onClick={handleClick}>
-        Upload File
-      </Button>
-      <input
+    <div 
+      className={prefixCls}
+    >
+      <div 
         className={`${prefixCls}-input`}
-        style={{ display: 'none' }}
-        ref={fileInputRef}
-        onChange={handleFileChange}
-        type="file"
-        accept={accept}
-        multiple={multiple}
-      />
+        onClick={handleClick}
+      >
+        {children}
+        <input
+          className={`${prefixCls}-file-input`}
+          style={{ display: 'none' }}
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          type="file"
+          accept={accept}
+          multiple={multiple}
+        />
+      </div>
       <UploadList fileList={fileList} onRemove={handleRemove} />
     </div>
   );
