@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import { AutoComplete } from 'zk-play-ui';
-import type { DataSourceType } from '..';
+import type { DataSourceType } from 'zk-play-ui/es/AutoComplete/autoComplete';
 
 interface LakerPlayerProps {
   value: string;

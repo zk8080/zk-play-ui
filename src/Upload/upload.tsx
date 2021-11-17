@@ -17,14 +17,62 @@ export interface UploadFile {
 }
 
 export interface UploadProps {
+  /**
+   * @description 上传地址
+   */
   action: string;
+  /**
+   * @description 上传的文件列表
+   */
   defaultFileList?: UploadFile[];
+  /**
+   * @description 上传文件前的钩子函数，参数为上传的文件，返回false或者Promise时停止上传
+   */
   beforeUpload?: (file: File) => boolean | Promise<File>;
-  onProgress?: (percentage: number, file: File) => void;
-  onSuccess?: (data: any, file: File) => void;
-  onError?: (err: any, file: File) => void;
-  onChange?: (file: File) => void;
+  /**
+   * @description 上传文件时的钩子函数
+   */
+  onProgress?: (percentage: number, file: UploadFile) => void;
+  /**
+   * @description 上传文件成功的钩子函数
+   */
+  onSuccess?: (data: any, file: UploadFile) => void;
+  /**
+   * @description 上传文件失败的钩子函数
+   */
+  onError?: (err: any, file: UploadFile) => void;
+  /**
+   * @description 文件状态改变时的钩子函数
+   */
+  onChange?: (file: UploadFile) => void;
+  /**
+   * @description 文件列表移除文件时的钩子函数
+   */
   onRemove?: (file: UploadFile) => void;
+  /**
+   * @description 上传文件字段名字
+   */
+  name?: string;
+  /**
+   * @description 上传时额为附带的参数
+   */
+  data?: { [key: string]: any };
+  /**
+   * @description 上传文件的请求头
+   */
+  headers?: { [key: string]: any };
+  /**
+   * @description 上传文件是否支持发送cookie
+   */
+  withCredentials?: boolean;
+  /**
+   * @description  接受上传的文件类型
+   */
+  accept?: string;
+  /**
+   * @description  是否支持多选
+   */
+  multiple?: boolean;
 }
 
 const prefixCls = 'zk-play-upload';
@@ -39,6 +87,12 @@ const Upload: FC<UploadProps> = (props) => {
     onChange,
     defaultFileList,
     onRemove,
+    name,
+    data,
+    headers,
+    withCredentials,
+    accept,
+    multiple,
   } = props;
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || []);
   const updateFileList = (
@@ -100,12 +154,21 @@ const Upload: FC<UploadProps> = (props) => {
       return [_file, ...prevList];
     });
     const formData = new FormData();
-    formData.append(file.name, file);
+    formData.append(name || 'file', file);
+    if (data) {
+      for (const key in data) {
+        if (Object.prototype.hasOwnProperty.call(data, key)) {
+          formData.append(key, data[key]);
+        }
+      }
+    }
     axios
       .post(action, formData, {
         headers: {
+          ...headers,
           'Content-Type': 'multipart/form-data',
         },
+        withCredentials,
         onUploadProgress: (e) => {
           let percentage = Math.round((e.loaded * 100) / e.total) || 0;
           if (percentage < 100) {
@@ -162,6 +225,8 @@ const Upload: FC<UploadProps> = (props) => {
         ref={fileInputRef}
         onChange={handleFileChange}
         type="file"
+        accept={accept}
+        multiple={multiple}
       />
       <UploadList fileList={fileList} onRemove={handleRemove} />
     </div>
