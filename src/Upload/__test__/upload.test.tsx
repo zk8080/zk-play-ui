@@ -25,7 +25,7 @@ export async function waitForComponentToPaint<P = {}>(
 }
 
 const testProps: UploadProps = {
-  action: 'fakeurl.com',
+  action: 'https://getman.cn/mock/upload',
   onSuccess: jest.fn(),
   onChange: jest.fn(),
   onRemove: jest.fn(),
